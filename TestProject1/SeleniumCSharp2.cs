@@ -4,10 +4,11 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
-             
+using System.Configuration.Assemblies;
 using System.Collections.Generic;
 using System.Text;
-using System.Configuration;
+using System.Web.Razor;
+//using System.Configuration;
 
 namespace TestProject1
 {
@@ -19,13 +20,15 @@ namespace TestProject1
         ExtentReports extent=null;
         [OneTimeSetUp]
         public void ExtendStart() {
+            Console.WriteLine("start up");
 
             extent = new ExtentReports();
-            var htmlReporter = new ExtentHtmlReporter(@"C:\Users\Amitesh\source\repos\TestProject1\TestProject1\ExtentReports\SeleniumCSharp2.html");
+            var htmlReporter = new ExtentHtmlReporter(@"C:\Users\Amitesh\source\repos\TestProject1\TestProject1\ExtentReports\demo.html");
             extent.AttachReporter(htmlReporter);
 
         
         }
+
         [OneTimeTearDown]
         public void ExtendClose() {
             extent.Flush();
@@ -55,6 +58,7 @@ namespace TestProject1
                 test.Log(Status.Info, "email entered");
                 IWebElement newid = driver.FindElement(By.XPath(".//*[@class='_42ft _4jy0 _6lti _4jy6 _4jy2 selected _51sy']"));
                 newid.Click();
+                driver.Quit();
                 test.Log(Status.Pass, "TEst1 passed");
 
 
@@ -67,7 +71,7 @@ namespace TestProject1
             }
             finally
             {
-                if (driver != null) driver.Quit();
+             //   if (driver != null) driver.Quit();
             }
 
 
