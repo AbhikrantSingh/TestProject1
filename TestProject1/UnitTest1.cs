@@ -27,7 +27,7 @@ namespace TestProject1
             SelectElement element = new SelectElement(monthDrop);
             element.SelectByValue("1");//Select by Value,we can do it via text nd index also.
             element.SelectByIndex(2);
-            Thread.Sleep(5000);
+        
         }
 
         [Test, Category("Regression Testing")]
